@@ -1,11 +1,11 @@
 # SnakeUnity
-Description:
+- Description:
 
-- Classic 2D arcade game Snake in Unity.
+  - Classic 2D arcade game Snake in Unity.
 
 Versions:
 
-- Unity:        2021.3.4f1 LTSf
+- Unity:        2021.3.4f1 LTS
 
 - SnakeUnity:   0.1
 
