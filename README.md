@@ -5,7 +5,7 @@ Description:
 
 Versions:
 
-- Unity:        2021.3.4f1 LTS
+- Unity:        2021.3.4f1 LTSf
 
 - SnakeUnity:   0.1
 
