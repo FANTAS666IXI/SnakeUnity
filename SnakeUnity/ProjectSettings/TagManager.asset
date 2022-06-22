@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Apple
+  - Wall
+  - Snake Head
+  - Snake Tail
   layers:
   - Default
   - TransparentFX
@@ -40,4 +44,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Wall
+    uniqueID: 3124667895
+    locked: 0
+  - name: Apple
+    uniqueID: 3101164663
+    locked: 0
+  - name: Snake Tail
+    uniqueID: 206466343
+    locked: 0
+  - name: Snake Head
+    uniqueID: 865628701
     locked: 0
