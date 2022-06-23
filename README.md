@@ -7,7 +7,7 @@
 
   - Unity : 2021.3.4f1 LTS
 
-  - SnakeUnity : 0.1
+  - SnakeUnity : 2.0
 
 - Bibliography :
 

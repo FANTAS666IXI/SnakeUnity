@@ -5,15 +5,17 @@ using UnityEngine;
 public class Snake : MonoBehaviour
 {
     private Vector2 direction = Vector2.zero;
-    private List<Transform> segments;
+    private List<Transform> segments = new List<Transform>();
     public Transform segmentPrefab;
-    public int initialSize = 2;
+    //public int initialSize = 0;
+    public static int score;
+    public static int maxScore;
+    public static bool gameOver;
+    public GameObject gameOverUI;
 
     private void Start()
     {
-        segments = new List<Transform>();
-        segments.Add(this.transform);
-        InitialSize();
+        ResetState();
     }
 
     private void Update()
@@ -26,8 +28,6 @@ public class Snake : MonoBehaviour
             direction = Vector2.right;
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
             direction = Vector2.left;
-        else if (Input.GetKeyDown(KeyCode.Space))
-            direction = Vector2.zero;
     }
 
     private void FixedUpdate()
@@ -43,36 +43,50 @@ public class Snake : MonoBehaviour
         Transform segment = Instantiate(this.segmentPrefab);
         segment.position = segments[segments.Count - 1].position;
         segments.Add(segment);
+        score ++;
+        Apple.scoreResetApple++;
+        if (score >= maxScore)
+            maxScore = score;
     }
 
-    private void ResetState()
+    private void GameOver()
     {
-        for (int i = 1; i < segments.Count; i++)
-            Destroy(segments[i].gameObject);
+        gameOverUI.SetActive(true);
+        Time.timeScale = 0f;
+    }
 
+    public void ResetState()
+    {
+        gameOverUI.SetActive(false);
+        Time.timeScale = 1f;
+        for (int i = 1; i < segments.Count; i++)
+        {
+            Destroy(segments[i].gameObject);
+        }
         segments.Clear();
         segments.Add(this.transform);
-
-        InitialSize();
-
+        //InitialSize();
         direction = Vector2.zero;
         this.transform.position = Vector3.zero;
+        score = 0;
+        Apple.scoreResetApple = 0;
+        Apple.resetApple = 3;
     }
 
-    private void InitialSize()
-    {
-        for (int i = 1; i < this.initialSize; i++)
-            segments.Add(Instantiate(this.segmentPrefab));
-    }
+    //private void InitialSize()
+    //{
+    //    for (int i = 1; i < this.initialSize; i++) { }
+    //        segments.Add(Instantiate(this.segmentPrefab));
+
+    //}
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Apple")
             Grow();
-
         else if (other.tag == "Wall")
-            ResetState();
+            GameOver();
         else if (other.tag == "Snake Tail")
-            ResetState();
+            GameOver();
     }
 }

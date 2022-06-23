@@ -51,9 +51,12 @@ TagManager:
   - name: Apple
     uniqueID: 3101164663
     locked: 0
+  - name: Snake Head
+    uniqueID: 865628701
+    locked: 0
   - name: Snake Tail
     uniqueID: 206466343
     locked: 0
-  - name: Snake Head
-    uniqueID: 865628701
+  - name: UI
+    uniqueID: 1854693351
     locked: 0
