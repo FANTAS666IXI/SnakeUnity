@@ -51,14 +51,16 @@ public class Snake : MonoBehaviour
 
     private void GameOver()
     {
+        gameOver = true;
         gameOverUI.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void ResetState()
     {
-        gameOverUI.SetActive(false);
         Time.timeScale = 1f;
+        gameOver = false;
+        gameOverUI.SetActive(false);
         for (int i = 1; i < segments.Count; i++)
         {
             Destroy(segments[i].gameObject);

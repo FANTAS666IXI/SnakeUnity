@@ -28,10 +28,13 @@ public class Apple : MonoBehaviour
         }
         if (resetApple >= 1)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Snake.gameOver == false)
             {
-                RandomizePosition();
-                resetApple--;
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    RandomizePosition();
+                    resetApple--;
+                }
             }
         }
         resetAppleText.text = $"{resetApple}";
